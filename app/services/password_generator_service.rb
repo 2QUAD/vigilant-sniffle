@@ -1,4 +1,5 @@
 require "redis"
+require "securerandom"
 
 class PasswordGeneratorService
   CHARSETS = {
@@ -54,7 +55,9 @@ class PasswordGeneratorService
   def self.store_password(password)
     # Verifica se a conexão com o Redis está funcionando antes de armazenar
     begin
-      redis.set("password_#{SecureRandom.uuid}", password)
+      key = "password_#{SecureRandom.uuid}" # Gera uma chave única
+      redis.set(key, password)
+      redis.expire(key, 3600) # Expira a chave após 1 hora
     rescue => e
       raise "Erro ao armazenar a senha no Redis: #{e.message}"
     end
