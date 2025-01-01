@@ -1,0 +1,32 @@
+<h1>Cadastro e Upload de Chaves SSH</h1>
+
+<%= form_with url: ssh_keys_upload_path, method: :post, local: true do |form| %>
+  <div>
+    <%= form.label :name, "Nome da Chave SSH" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :host, "Host do Servidor" %>
+    <%= form.text_field :host %>
+  </div>
+
+  <div>
+    <%= form.label :user, "Usuário" %>
+    <%= form.text_field :user %>
+  </div>
+
+  <div>
+    <%= form.label :local_path, "Caminho Local do Arquivo" %>
+    <%= form.text_field :local_path %>
+  </div>
+
+  <div>
+    <%= form.label :remote_path, "Caminho Remoto no Servidor" %>
+    <%= form.text_field :remote_path %>
+  </div>
+
+  <div>
+    <%= form.submit "Realizar Upload" %>
+  </div>
+<% end %>

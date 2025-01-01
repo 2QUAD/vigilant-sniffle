@@ -1,0 +1,29 @@
+<h1>Upload de Arquivo via SSH</h1>
+<%= form_with url: ssh_keys_upload_path, method: :post do %>
+  <div>
+    <%= label_tag :name, "Nome da Chave SSH" %>
+    <%= text_field_tag :name %>
+  </div>
+
+  <div>
+    <%= label_tag :host, "Host do Servidor" %>
+    <%= text_field_tag :host %>
+  </div>
+
+  <div>
+    <%= label_tag :user, "Usuário" %>
+    <%= text_field_tag :user %>
+  </div>
+
+  <div>
+    <%= label_tag :local_path, "Caminho Local do Arquivo" %>
+    <%= text_field_tag :local_path %>
+  </div>
+
+  <div>
+    <%= label_tag :remote_path, "Caminho Remoto no Servidor" %>
+    <%= text_field_tag :remote_path %>
+  </div>
+
+  <%= submit_tag "Realizar Upload" %>
+<% end %>

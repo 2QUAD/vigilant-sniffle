@@ -7,6 +7,7 @@ class SshKeysController < ApplicationController
 
   def new
     # Exibe o formulário para cadastrar uma nova chave
+    @ssh_key = SshKey.new
   end
 
   def create

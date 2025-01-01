@@ -1,0 +1,16 @@
+<h1>Lista de Chaves SSH</h1>
+
+<% if @keys.present? %>
+  <ul>
+    <% @keys.each do |key| %>
+      <li>
+        <strong><%= key[:name] %></strong>
+        <%= link_to 'Deletar', ssh_key_path(key[:name]), method: :delete, data: { confirm: 'Tem certeza?' } %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Não há chaves SSH cadastradas.</p>
+<% end %>
+
+<%= link_to 'Cadastrar nova chave SSH', new_ssh_key_path %>
