@@ -1,9 +1,6 @@
 source "https://rubygems.org"
 
-gem "omniauth-oauth2"
-gem "omniauth-microsoft_graph"
-gem "rubyXL" # Para manipulação de planilhas Excel
-gem "microsoft_graph"
+
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.1"

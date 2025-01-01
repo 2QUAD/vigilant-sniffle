@@ -54,7 +54,7 @@ class PasswordGeneratorService
   def self.store_password(password)
     # Verifica se a conexão com o Redis está funcionando antes de armazenar
     begin
-      redis.set("password_#{Time.now.to_i}", password)
+      redis.set("password_#{SecureRandom.uuid}", password)
     rescue => e
       raise "Erro ao armazenar a senha no Redis: #{e.message}"
     end
