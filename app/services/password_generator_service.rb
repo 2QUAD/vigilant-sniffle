@@ -28,7 +28,7 @@ class PasswordGeneratorService
 
   # Valida se as opções fornecidas são válidas
   def self.validate_options(options)
-    valid_keys = [:lowercase, :uppercase, :digits, :symbols]
+    valid_keys = [ :lowercase, :uppercase, :digits, :symbols ]
     options.each_key do |key|
       unless valid_keys.include?(key)
         raise ArgumentError, "Opção inválida: #{key}"
