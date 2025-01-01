@@ -1,5 +1,4 @@
-#controlador das ssh_key
-
+# controlador das ssh_key
 class SshKeysController < ApplicationController
   def index
     # Exibe todas as chaves armazenadas no Redis
@@ -27,5 +26,26 @@ class SshKeysController < ApplicationController
     # Deleta uma chave SSH
     SshKey.delete(params[:name])
     redirect_to ssh_keys_path, notice: "Chave SSH deletada com sucesso!"
+  end
+
+  def upload
+    # Realiza o upload do arquivo para o servidor remoto
+    name = params[:name]
+    host = params[:host]
+    user = params[:user]
+    local_path = params[:local_path]
+    remote_path = params[:remote_path]
+
+    begin
+      # Cria a instância do serviço de upload e realiza o upload
+      uploader = SshUploader.new(name, host, user, local_path, remote_path)
+      uploader.upload
+
+      # Responde com sucesso
+      render plain: "Arquivo enviado com sucesso!"
+    rescue => e
+      # Exibe a mensagem de erro, caso haja falha no upload
+      render plain: "Erro: #{e.message}", status: :unprocessable_entity
+    end
   end
 end
